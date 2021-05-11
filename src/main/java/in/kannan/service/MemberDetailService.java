@@ -5,7 +5,10 @@ import java.util.List;
 
 public class MemberDetailService {
 	
-	private static final List<String> familyMembers= new ArrayList<String> ();
+	private MemberDetailService() {
+		//Default constructor 
+	}
+	private static final List<String> familyMembers= new ArrayList<> ();
 	
 	static
 	{
