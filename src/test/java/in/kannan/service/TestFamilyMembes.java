@@ -16,7 +16,7 @@ public class TestFamilyMembes {
 	@Test
 	public void testFamilyMembers() {
 		
-		List<String> familyDetails = MemberDetail.getFamilyMembers();
+		List<String> familyDetails = MemberDetailService.getFamilyMembers();
 		assertEquals(3, familyDetails.size());
 	}
 

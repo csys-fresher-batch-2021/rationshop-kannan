@@ -3,15 +3,15 @@ package in.kannan.service;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MemberDetail {
+public class MemberDetailService {
 	
-	private static List<String> familyMembers= new ArrayList<String> ();
+	private static final List<String> familyMembers= new ArrayList<String> ();
 	
 	static
 	{
 		familyMembers.add("Ramachandran");
 		familyMembers.add("Vairam");
-		familyMembers.add("kannan");
+		familyMembers.add("Kannan");
 	}
 	/*
 	 * returns the name of the members 
