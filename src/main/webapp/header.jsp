@@ -15,7 +15,7 @@
         <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="familymember.jsp">Family Member</a>
+        <a class="nav-link" href="familymember.jsp">Reset</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>

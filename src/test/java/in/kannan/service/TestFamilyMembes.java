@@ -10,7 +10,8 @@ import org.junit.Test;
 
 public class TestFamilyMembes {
 	/**
-	 * tests the 
+	 * tests the familyMembers
+	 * 
 	 */
 
 	@Test
