@@ -20,7 +20,7 @@ public class MemberDetailService {
 		familyMembers.add("Kannan");
 	}
 	/*
-	 * returns the name of the familyMembers
+	 * returns the names of the familyMembers
 	 */
 
 	public static List<String> getFamilyMembers() {
@@ -44,6 +44,21 @@ public class MemberDetailService {
 		}
 
 		return isValid;
+	}
+
+	/**
+	 * Deletes the particular member from ArrayList
+	 * 
+	 * @param name
+	 * @return
+	 */
+
+	public static boolean deleteMember(String name) {
+		int index = familyMembers.indexOf(name);
+		if (index != -1) {
+			familyMembers.remove(index);
+		}
+		return true;
 	}
 
 }

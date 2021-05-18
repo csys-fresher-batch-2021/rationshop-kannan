@@ -1,7 +1,6 @@
 package in.kannan.servlet;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,11 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import in.kannan.service.MemberDetailService;
 
 /**
- * Servlet implementation class AddMemberServlet
+ * Servlet implementation class DeleteMemberServlet
  */
-@WebServlet("/AddMemberServlet")
-public class AddMemberServlet extends HttpServlet {
+@WebServlet("/DeleteMemberServlet")
+public class DeleteMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public DeleteMemberServlet() {
+		super();
+
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -23,20 +30,10 @@ public class AddMemberServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String name = request.getParameter("user");
 
-		String name1 = request.getParameter("name2");
-
-		boolean isAdded = MemberDetailService.addMember(name1);
-
-		if (isAdded) {
-			String Message = "Member Name Added";
-			response.sendRedirect("displayMembers.jsp?Message=" + Message);
-
-		} else {
-			String errorMessage = "Unable to add Member Name";
-			response.sendRedirect("AddMember.jsp?errorMessage=" + errorMessage);
-		}
-
+		MemberDetailService.deleteMember(name);
+		response.sendRedirect("displayMembers.jsp");
 	}
 
 }
