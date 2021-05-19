@@ -60,5 +60,5 @@ public class MemberDetailService {
 		}
 		return true;
 	}
-
+	
 }

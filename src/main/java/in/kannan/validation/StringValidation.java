@@ -1,42 +1,41 @@
 package in.kannan.validation;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class StringValidation {
 	/**
-	 * validates the name 
+	 * validates the name
+	 * 
 	 * @param name
 	 * @return
 	 */
 	public static boolean isValidName(String name) {
 		boolean isValid = false;
-		if (notNull(name)) {
 
-			Pattern p = Pattern.compile("^[A-Za-z\s]+$");
-			Matcher m = p.matcher(name);
+		if (name != null) {
+			isValid = true;
 
-			if (m.matches()) {
-				isValid = true;
+			if (name.trim().equals("")) {
+				isValid = false;
 			}
+
+			String exceptions = "!@#$%^&*()_+},=-`~{:1234567890?/><";
+			int count = 0;
+
+			for (int i = 0; i < name.trim().length(); i++) {
+				char c = name.trim().charAt(i);
+				for (int j = 0; j < exceptions.length(); j++) {
+					char d = exceptions.charAt(j);
+					if (c == d) {
+						count = 1;
+					}
+				}
+			}
+			if (count == 1) {
+				isValid = false;
+			}
+
 		}
 		return isValid;
 
-	}
-	/**
-	 * Validates null in string
-	 * @param name
-	 * @return
-	 */
-
-	public static boolean notNull(String name) {
-
-		boolean isValid = true;
-		if (name == null || name.trim().equals(""))// correct
-		{
-			isValid = false;
-		}
-		return isValid;
 	}
 
 }
