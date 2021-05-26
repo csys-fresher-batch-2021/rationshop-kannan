@@ -14,4 +14,24 @@
     <servlet-name>AddMembernm</servlet-name>
     <url-pattern>/AddMembernm</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AddMember</display-name>
+    <servlet-name>AddMember</servlet-name>
+    <jsp-file>/AddMember.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddMember</servlet-name>
+    <url-pattern>/AddMember</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ResetMemberServlet</display-name>
+    <servlet-name>ResetMemberServlet</servlet-name>
+    <servlet-class>in.kannan.servlet.AddMemberServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ResetMemberServlet</servlet-name>
+    <url-pattern>/ResetMemberServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

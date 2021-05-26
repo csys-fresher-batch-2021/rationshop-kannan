@@ -15,11 +15,22 @@
 
 		<h1>Addition of a member to Card</h1>
 		<br>
+		
 		<form action="AddMemberServlet" method="Get">
 			<label>Enter the Person to Add</label> <input type="text" id="text"
 				name="name2" placeholder="Enter member to add"> <br> <br>
 			<button>Enter</button>
 		</form>
+		<%
+		String errorMessage = (String) request.getAttribute("errorMessage");
+
+		if (errorMessage != null) {
+		%>
+
+		<h2 style="color:red;" ><%=errorMessage%></h2>
+		<%
+		}
+		%>
 
 
 	</main>

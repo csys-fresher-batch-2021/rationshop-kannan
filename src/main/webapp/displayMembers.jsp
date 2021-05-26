@@ -20,6 +20,7 @@
 			<tbody>
 				<%
 				List<String> familyMembers = MemberDetailService.getFamilyMembers();
+				
 				int i = 0;
 
 				for (String family : familyMembers) {

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import in.kannan.exception.MyException;
 import in.kannan.service.MemberDetailService;
 
 /**
@@ -26,17 +27,20 @@ public class AddMemberServlet extends HttpServlet {
 
 		String name1 = request.getParameter("name2");
 
-		boolean isAdded = MemberDetailService.addMember(name1);
+		boolean isAdded;
+		try {
+			 MemberDetailService.addMember(name1);
+			
+				String Message = "Member Name Added";
+				response.sendRedirect("displayMembers.jsp?Message" + Message);
 
-		if (isAdded) {
-			String Message = "Member Name Added";
-			response.sendRedirect("displayMembers.jsp?Message=" + Message);
-
-		} else {
+			
+		} catch (MyException e) {
 			String errorMessage = "Unable to add Member Name";
-			response.sendRedirect("AddMember.jsp?errorMessage=" + errorMessage);
+			request.setAttribute("errorMessage", "Sorry InValid Details");
+			request.getRequestDispatcher("AddMember.jsp").forward(request, response);
+			response.sendRedirect("AddMember.jsp?errorMessage" + errorMessage);
 		}
 
 	}
-
 }

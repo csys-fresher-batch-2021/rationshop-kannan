@@ -1,10 +1,11 @@
 package in.kannan.service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.List;
 
-import in.kannan.validation.StringValidation;
+import in.kannan.exception.MyException;
+import in.kannan.validation.UserValidation;
 
 public class MemberDetailService {
 
@@ -13,6 +14,7 @@ public class MemberDetailService {
 	}
 
 	private static final List<String> familyMembers = new ArrayList<>();
+	
 
 	static {
 		familyMembers.add("Ramachandran");
@@ -34,10 +36,11 @@ public class MemberDetailService {
 	 * 
 	 * @param name
 	 * @return
+	 * @throws MyException 
 	 */
-	public static boolean addMember(String name) {
+	public static boolean addMember(String name) throws MyException {
 		boolean isValid = false;
-		if (StringValidation.isValidName(name)) {
+		if (UserValidation.isValidName(name)) {
 
 			familyMembers.add(name);
 			isValid = true;
