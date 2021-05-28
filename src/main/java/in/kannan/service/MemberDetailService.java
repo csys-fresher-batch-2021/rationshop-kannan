@@ -1,10 +1,11 @@
 package in.kannan.service;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+
 import java.util.List;
 
-import in.kannan.validation.StringValidation;
+import in.kannan.exception.ValidationException;
+import in.kannan.validation.UserValidation;
 
 public class MemberDetailService {
 
@@ -13,6 +14,7 @@ public class MemberDetailService {
 	}
 
 	private static final List<String> familyMembers = new ArrayList<>();
+	
 
 	static {
 		familyMembers.add("Ramachandran");
@@ -20,7 +22,7 @@ public class MemberDetailService {
 		familyMembers.add("Kannan");
 	}
 	/*
-	 * returns the name of the familyMembers
+	 * returns the names of the familyMembers
 	 */
 
 	public static List<String> getFamilyMembers() {
@@ -34,10 +36,11 @@ public class MemberDetailService {
 	 * 
 	 * @param name
 	 * @return
+	 * @throws ValidationException 
 	 */
-	public static boolean addMember(String name) {
+	public static boolean addMember(String name) throws ValidationException {
 		boolean isValid = false;
-		if (StringValidation.isValidName(name)) {
+		if (UserValidation.isValidName(name)) {
 
 			familyMembers.add(name);
 			isValid = true;
@@ -46,4 +49,19 @@ public class MemberDetailService {
 		return isValid;
 	}
 
+	/**
+	 * Deletes the particular member from ArrayList
+	 * 
+	 * @param name
+	 * @return
+	 */
+
+	public static boolean deleteMember(String name) {
+		int index = familyMembers.indexOf(name);
+		if (index != -1) {
+			familyMembers.remove(index);
+		}
+		return true;
+	}
+	
 }
