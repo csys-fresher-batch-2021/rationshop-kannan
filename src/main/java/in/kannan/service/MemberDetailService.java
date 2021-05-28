@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import java.util.List;
 
-import in.kannan.exception.MyException;
+import in.kannan.exception.ValidationException;
 import in.kannan.validation.UserValidation;
 
 public class MemberDetailService {
@@ -36,9 +36,9 @@ public class MemberDetailService {
 	 * 
 	 * @param name
 	 * @return
-	 * @throws MyException 
+	 * @throws ValidationException 
 	 */
-	public static boolean addMember(String name) throws MyException {
+	public static boolean addMember(String name) throws ValidationException {
 		boolean isValid = false;
 		if (UserValidation.isValidName(name)) {
 

@@ -28,12 +28,18 @@ public class DeleteMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String name = request.getParameter("user");
 
 		MemberDetailService.deleteMember(name);
-		response.sendRedirect("displayMembers.jsp");
+		try {
+			response.sendRedirect("displayMembers.jsp");
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
 	}
 
 }

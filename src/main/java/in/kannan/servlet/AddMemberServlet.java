@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import in.kannan.exception.MyException;
+import in.kannan.exception.ValidationException;
 import in.kannan.service.MemberDetailService;
 
 /**
@@ -22,24 +22,29 @@ public class AddMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		String name1 = request.getParameter("name2");
 
-		boolean isAdded;
 		try {
 			 MemberDetailService.addMember(name1);
 			
-				String Message = "Member Name Added";
-				response.sendRedirect("displayMembers.jsp?Message" + Message);
+				String message = "Member Name Added";
+				response.sendRedirect("displayMembers.jsp?Message" + message);
 
 			
-		} catch (MyException e) {
+		} catch (ValidationException | IOException e) {
 			String errorMessage = "Unable to add Member Name";
 			request.setAttribute("errorMessage", "Sorry InValid Details");
-			request.getRequestDispatcher("AddMember.jsp").forward(request, response);
-			response.sendRedirect("AddMember.jsp?errorMessage" + errorMessage);
+			try {
+				request.getRequestDispatcher("AddMember.jsp").forward(request, response);
+				response.sendRedirect("AddMember.jsp?errorMessage" + errorMessage);
+			} catch (ServletException |IOException e1) {
+
+				e1.printStackTrace();
+			}
 		}
 
 	}

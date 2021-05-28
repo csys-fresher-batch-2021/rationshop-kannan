@@ -1,15 +1,18 @@
 package in.kannan.validation;
 
-import in.kannan.exception.MyException;
+import in.kannan.exception.ValidationException;
 
 public class UserValidation {
+	private UserValidation() {
+		super();
+	}
 	/**
 	 * validates the name
 	 * 
 	 * @param name
 	 * @return
 	 */
-	public static boolean isValidName(String name)throws MyException {
+	public static boolean isValidName(String name)throws ValidationException {
 		boolean isValid = false;
 
 		if (name != null) {
@@ -32,8 +35,8 @@ public class UserValidation {
 				}
 			}
 			if (count == 1) {
-				isValid = false;
-				throw new MyException("InValid String");
+				
+				throw new ValidationException("InValid String");
 			}
 
 		}
@@ -43,21 +46,21 @@ public class UserValidation {
 	
 	/**
 	 * validates the age 
-	 * @param age
+	 * @param userId
 	 * @return
 	 */
-	public static boolean isValidAge(int age)throws MyException {
+	public static boolean isValidUserId(int userId)throws ValidationException {
 		boolean isValid = false;
-		if (age > 0 && age < 110) {
+		if (userId > 1000 && userId < 10000) {
 			isValid = true;
 		}else
 		{
-			throw new MyException("InValid age");
+			throw new ValidationException("InValid age");
 		}
 		return isValid;
 	}
 	
-	public static boolean isValidGender(String gender )throws MyException
+	public static boolean isValidGender(String gender )throws ValidationException
 	{
 		boolean isValid = false;
 		if(gender.equals("Male")  || gender.equals("Female"))
@@ -65,7 +68,7 @@ public class UserValidation {
 			isValid =true;
 		}
 		else {
-			throw new MyException("InValid Gender type");
+			throw new ValidationException("InValid Gender type");
 		}
 		return isValid;
 	}
